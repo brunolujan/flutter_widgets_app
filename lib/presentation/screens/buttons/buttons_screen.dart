@@ -8,8 +8,12 @@ class ButtonsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
+        titleTextStyle: TextStyle(color: colors.background, fontSize: 21),
+        backgroundColor: colors.secondary,
         title: const Text('Buttons Screen'),
       ),
       body: const _ButtonsView(),
