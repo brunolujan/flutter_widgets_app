@@ -22,24 +22,31 @@ const appMenuItems = <MenuItem>[
     icon: Icons.arrow_drop_down_circle_sharp
   ),
 
-    MenuItem(
+  MenuItem(
     title: 'Cards', 
     subTitle: 'A stylized container', 
     link: '/cards', 
     icon: Icons.analytics_rounded
   ),
 
-    MenuItem(
+  MenuItem(
     title: 'Progress Indicators', 
     subTitle: 'Generals and controlled', 
     link: '/progress', 
     icon: Icons.replay_circle_filled_outlined
   ),
 
-    MenuItem(
+  MenuItem(
     title: 'Snack Bars and Dialog Window', 
     subTitle: 'Indicators on screen', 
     link: '/snackbars', 
     icon: Icons.info_rounded
+  ),
+
+  MenuItem(
+    title: 'Animated Container', 
+    subTitle: 'Animated stateful widget', 
+    link: '/animated', 
+    icon: Icons.animation_rounded
   ),
 ];
