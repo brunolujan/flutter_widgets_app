@@ -16,7 +16,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
   Color color = Colors.blue;
   double borderRadius = 20.0;
 
-  void changeShape() {
+  void changeContainerShape() {
     final random = Random();
     width = random.nextInt(300) + 120;
     height = random.nextInt(300) + 120;
@@ -56,9 +56,11 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: changeShape,
+        onPressed: changeContainerShape,
+        shape: const CircleBorder(),
         child: const Icon(Icons.play_arrow_rounded),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
