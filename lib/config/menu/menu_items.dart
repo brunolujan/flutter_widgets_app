@@ -56,4 +56,11 @@ const appMenuItems = <MenuItem>[
     link: '/ui-controls', 
     icon: Icons.view_comfortable_rounded
   ),
+
+  MenuItem(
+    title: 'Application Introduction', 
+    subTitle: 'This is how you have to use my app', 
+    link: '/app-tutorial', 
+    icon: Icons.phone_iphone_rounded
+  ),
 ];
