@@ -63,4 +63,11 @@ const appMenuItems = <MenuItem>[
     link: '/app-tutorial', 
     icon: Icons.phone_iphone_rounded
   ),
+  
+  MenuItem(
+    title: 'Infinite Scroll and Pull', 
+    subTitle: 'Infinite list and pull to refresh', 
+    link: '/infinite-scroll', 
+    icon: Icons.fingerprint_rounded
+  ),
 ];
