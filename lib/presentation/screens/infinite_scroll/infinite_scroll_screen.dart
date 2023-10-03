@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -63,6 +65,23 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     );
   }
 
+  Future<void> onRefresh() async {
+    isLoading = true;
+    setState(() {});
+    
+    await Future.delayed(const Duration(seconds: 2));
+    if (!isMounted) return;
+
+    isLoading = false;
+    final lastId = imagesIds.last;
+    imagesIds.clear();
+    imagesIds.add(lastId + 1);
+
+    addFiveImages();
+    
+    setState(() {});  
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -72,19 +91,23 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         context: context,
         removeTop: true,
         removeBottom: true,
-        child: ListView.builder(
-          controller: scrollController,
-          physics: const BouncingScrollPhysics(),
-          itemCount: imagesIds.length,
-          itemBuilder: (context, index) {
-            return FadeInImage(
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: 300,
-              placeholder: const AssetImage('assets/images/jar-loading.gif'), 
-              image: NetworkImage('https://picsum.photos/id/${imagesIds[index]}/500/300')
-            );
-          },
+        child: RefreshIndicator(
+          edgeOffset: 10,
+          onRefresh: onRefresh,
+          child: ListView.builder(
+            controller: scrollController,
+            physics: const BouncingScrollPhysics(),
+            itemCount: imagesIds.length,
+            itemBuilder: (context, index) {
+              return FadeInImage(
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 300,
+                placeholder: const AssetImage('assets/images/jar-loading.gif'), 
+                image: NetworkImage('https://picsum.photos/id/${imagesIds[index]}/500/300')
+              );
+            },
+          ),
         ),
       ),
       
