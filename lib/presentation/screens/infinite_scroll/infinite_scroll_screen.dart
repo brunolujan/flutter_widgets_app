@@ -54,7 +54,7 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     if (!isMounted) return;
     setState(() {});
 
-    
+    moveScrollToBottom();
   }
 
   void addFiveImages() {
@@ -79,7 +79,17 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
 
     addFiveImages();
     
-    setState(() {});  
+    setState(() {});    
+  }
+
+  void moveScrollToBottom() {
+    if (scrollController.position.pixels + 100 <= scrollController.position.maxScrollExtent) return;
+  
+    scrollController.animateTo(
+      scrollController.position.maxScrollExtent + 120, 
+      duration: const Duration(milliseconds: 300), 
+      curve: Curves.fastOutSlowIn 
+    );
   }
 
   @override
